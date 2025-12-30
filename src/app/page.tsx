@@ -42,8 +42,8 @@ const TestimonialCarousel = () => {
   }, [isPaused]);
 
   return (
-    <SectionWrapper background="soft" withWaveTop withWaveBottom className="py-24 md:py-32 overflow-hidden">
-      <div className="text-center mb-16 relative">
+    <SectionWrapper background="soft" withWaveTop withWaveBottom className="py-12 md:py-32 overflow-hidden">
+      <div className="text-center mb-8 md:mb-16 relative">
         {/* Rainbow Motif */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-32 -z-10 opacity-20 pointer-events-none">
           <svg viewBox="0 0 200 100" className="w-full h-full">
@@ -147,8 +147,8 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-0 md:pt-4 lg:pt-8 pb-20 md:pb-32 bg-[linear-gradient(135deg,#FFFCF5_0%,#FFF5F5_50%,#F0F9FF_100%)]">
-        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <section className="relative overflow-hidden pt-0 md:pt-4 lg:pt-8 pb-12 md:pb-32 bg-[linear-gradient(135deg,#FFFCF5_0%,#FFF5F5_50%,#F0F9FF_100%)]">
+        <div className="container mx-auto px-4 flex flex-col-reverse md:grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -156,7 +156,7 @@ export default function Home() {
             className="z-10"
           >
             {/* Removed inline Admissions Open badge as it's now in TopBar */}
-            <h1 className="text-5xl md:text-7xl font-bold text-gray-800 leading-tight mb-6 tracking-tight flex flex-wrap gap-x-3 gap-y-1">
+            <h1 className="text-4xl md:text-7xl font-bold text-gray-800 leading-tight mb-4 md:mb-6 tracking-tight flex flex-wrap gap-x-2 md:gap-x-3 gap-y-1">
               {[
                 { text: "Where", delay: 0 },
                 { text: "Little", delay: 0.1 },
@@ -178,7 +178,7 @@ export default function Home() {
               ))}
             </h1>
 
-            <p className="font-medium text-gray-600 text-xl md:text-2xl mb-8 leading-relaxed max-w-lg">
+            <p className="font-medium text-gray-600 text-lg md:text-2xl mb-6 md:mb-8 leading-relaxed max-w-lg">
               Premium Care & Education in Sector 10, Gurgaon. Live CCTV, Home-Cooked Meals & 1:8 Teacher Ratio.
             </p>
 
@@ -201,7 +201,7 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="mt-8 flex items-center gap-4 opacity-90">
+            <div className="mt-6 md:mt-8 flex items-center justify-center md:justify-start gap-4 opacity-90">
               <div className="flex gap-0.5 text-yellow-500 bg-white/50 px-2 py-1 rounded-full backdrop-blur-sm shadow-sm">
                 {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-current" />)}
               </div>
@@ -209,7 +209,7 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* Hero Image Blob with Magic Float */}
+          {/* Hero Image Blob with Magic Float - Simplified Mobile View */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1, y: [0, -15, 0] }}
@@ -218,7 +218,7 @@ export default function Home() {
               scale: { duration: 0.8 },
               y: { duration: 4, repeat: Infinity, ease: "easeInOut" }
             }}
-            className="relative z-10 hidden md:block"
+            className="relative z-10 w-full"
           >
             <div className="relative w-full aspect-square max-w-md mx-auto">
               <div className="absolute top-0 right-0 w-40 h-40 bg-accent/30 rounded-full blur-3xl -z-10 animate-pulse"></div>
@@ -273,7 +273,7 @@ export default function Home() {
             variants={{
               visible: { transition: { staggerChildren: 0.15 } }
             }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 pb-8 md:pb-0 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0"
           >
             {[
               {
@@ -320,7 +320,7 @@ export default function Home() {
                   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
                 }}
               >
-                <Link href={`/programs#${prog.link}`} className="block group h-full">
+                <Link href={`/programs#${prog.link}`} className="block group h-full min-w-[85vw] md:min-w-0 snap-center">
                   <Card hoverEffect className={`h-full border-2 bg-gradient-to-br ${prog.theme} ${prog.shadow} transition-all duration-500 hover:scale-105 hover:rotate-1 relative overflow-hidden`}>
                     {/* Decorative circle bg */}
                     <div className="absolute -right-6 -top-6 w-24 h-24 bg-white/40 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
@@ -346,11 +346,14 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Testimonials - Moved Up for Mobile Impact */}
+      <TestimonialCarousel />
+
       {/* Quick Facts Strip - Brand Yellow Pop */}
-      <div className="bg-yellow-400 py-16 mb-24 text-gray-900 shadow-xl relative z-20 mx-4 md:mx-10 rounded-[3rem] -mt-10 overflow-hidden">
+      <div className="bg-yellow-400 py-8 md:py-16 mb-12 md:mb-24 text-gray-900 shadow-xl relative z-20 mx-4 md:mx-10 rounded-[2rem] md:rounded-[3rem] -mt-10 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white to-transparent"></div>
         <div className="container mx-auto px-4 relative">
-          <div className="flex flex-col md:flex-row justify-center md:justify-around items-center gap-8 md:gap-12 text-center md:text-left text-xl font-heading font-bold tracking-wide">
+          <div className="grid grid-cols-2 md:flex md:flex-row justify-center md:justify-around items-center gap-6 md:gap-12 text-center md:text-left text-lg md:text-xl font-heading font-bold tracking-wide">
             <div className="flex flex-col md:flex-row items-center gap-3">
               <span className="text-2xl">🕒</span> 8:30 AM - 6:30 PM
             </div>
@@ -371,8 +374,8 @@ export default function Home() {
       </div>
 
       {/* Trust Section - The Emotional Core */}
-      <SectionWrapper background="white" withWaveTop withWaveBottom className="py-24">
-        <div className="text-center mb-16">
+      <SectionWrapper background="white" withWaveTop withWaveBottom className="py-12 md:py-24">
+        <div className="text-center mb-10 md:mb-16">
           <h2 className="text-4xl md:text-6xl font-bold mb-4 text-gray-900">Why Parents Trust Us</h2>
           <p className="text-gray-500 text-xl max-w-2xl mx-auto font-medium">Built for working parents who want a homely yet professional daycare.</p>
         </div>
@@ -389,6 +392,7 @@ export default function Home() {
               key={idx}
               {...fadeInUp}
               transition={{ delay: idx * 0.1 }}
+              className={idx > 2 ? 'hidden md:block' : ''}
             >
               <Card className={`h-full flex flex-col items-center text-center p-6 border-2 ${item.bg} hover:border-primary/30 transition-colors duration-300 group`}>
                 <div className="w-20 h-20 rounded-full bg-white shadow-md flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 border-4 border-white">
@@ -402,7 +406,7 @@ export default function Home() {
                   <div className="scale-[1.5] transform">{item.icon}</div>
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-gray-800">{item.title}</h3>
-                <p className="text-gray-600 text-sm mb-4 leading-relaxed flex-grow">{item.desc}</p>
+                <p className="text-gray-600 text-sm mb-4 leading-relaxed flex-grow hidden md:block">{item.desc}</p>
                 <span className="text-xs font-bold uppercase tracking-widest text-primary">{item.highlight}</span>
               </Card>
             </motion.div>
@@ -410,11 +414,10 @@ export default function Home() {
         </div>
       </SectionWrapper>
 
-      {/* Testimonials - Real Love */}
-      <TestimonialCarousel />
+
 
       {/* Founder Teaser - The Heart */}
-      <section className="py-20 bg-gradient-to-b from-white to-orange-50 relative overflow-hidden">
+      <section className="py-12 md:py-20 bg-gradient-to-b from-white to-orange-50 relative overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center gap-12 max-w-5xl mx-auto">
             <div className="w-full md:w-1/2 relative group">
@@ -448,7 +451,7 @@ export default function Home() {
       </section>
 
       {/* Life at Rainbow Sprouts - Gallery Tease */}
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Life at Rainbow Sprouts</h2>
@@ -471,7 +474,7 @@ export default function Home() {
       </section>
 
       {/* Map Section */}
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-10">Visit Us</h2>
           <div className="rounded-3xl overflow-hidden shadow-2xl h-[400px] border-4 border-white max-w-5xl mx-auto relative bg-slate-100">
