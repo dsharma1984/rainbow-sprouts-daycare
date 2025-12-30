@@ -12,7 +12,7 @@ export function Footer() {
                         <img
                             src="/images/logo-icon.png"
                             alt="Logo"
-                            className="h-10 w-10 object-contain brightness-0 invert opacity-90"
+                            className="h-10 w-10 object-contain"
                         />
                         <h3 className="text-2xl font-bold text-white tracking-wide">Rainbow Sprouts</h3>
                     </div>

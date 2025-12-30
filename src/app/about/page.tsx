@@ -35,36 +35,36 @@ export default function AboutPage() {
                             <h3 className="text-xl font-bold text-gray-500 mb-6">Founder & Principal</h3>
 
                             <p className="text-gray-600 leading-relaxed mb-6 text-lg">
-                                With over 10 years of experience in early childhood education, Kamini is dedicated to creating a nurturing environment where every child can flourish. As a B.Ed and TEFL certified educator, she specializes in personality development and holistic learning methodologies.
+                                "With over 10 years of experience in early childhood education, Kamini is dedicated to creating a nurturing environment where every child can flourish. As a B.Ed and TEFL certified educator with an MBA and UGC-NET qualification, she specializes in personality development and holistic learning methodologies."
                             </p>
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div className="flex items-center gap-3 p-4 bg-yellow-50 rounded-xl">
-                                    <Clock className="w-6 h-6 text-yellow-600" />
+                                    <Clock className="w-6 h-6 text-yellow-600 shrink-0" />
                                     <div>
                                         <p className="font-bold text-gray-800">10+ Years</p>
                                         <p className="text-sm text-gray-500">Experience</p>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-3 p-4 bg-blue-50 rounded-xl">
-                                    <GraduationCap className="w-6 h-6 text-blue-600" />
+                                    <GraduationCap className="w-6 h-6 text-blue-600 shrink-0" />
                                     <div>
-                                        <p className="font-bold text-gray-800">B.Ed & TEFL</p>
-                                        <p className="text-sm text-gray-500">Certified</p>
+                                        <p className="font-bold text-gray-800">MBA & UGC-NET</p>
+                                        <p className="text-sm text-gray-500">Qualified</p>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-3 p-4 bg-purple-50 rounded-xl">
-                                    <Award className="w-6 h-6 text-purple-600" />
+                                    <Award className="w-6 h-6 text-purple-600 shrink-0" />
                                     <div>
                                         <p className="font-bold text-gray-800">Specialist</p>
                                         <p className="text-sm text-gray-500">Personality Dev</p>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-3 p-4 bg-pink-50 rounded-xl">
-                                    <Heart className="w-6 h-6 text-pink-600" />
+                                    <Heart className="w-6 h-6 text-pink-600 shrink-0" />
                                     <div>
-                                        <p className="font-bold text-gray-800">Passionate</p>
-                                        <p className="text-sm text-gray-500">Educator</p>
+                                        <p className="font-bold text-gray-800">Expert</p>
+                                        <p className="text-sm text-gray-500">Early Childhood Ed</p>
                                     </div>
                                 </div>
                             </div>

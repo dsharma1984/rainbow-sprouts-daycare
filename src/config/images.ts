@@ -12,7 +12,7 @@ export const IMAGES = {
   daycare: 'https://images.unsplash.com/photo-1472162072942-cd5147eb3902?auto=format&fit=crop&q=80&w=600',
 
   // Founder
-  founder: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=600',
+  founder: '/images/founder.jpg',
 
   // Gallery (Placeholders)
   gallery1: 'https://images.unsplash.com/photo-1596464716127-f9a063995d54?auto=format&fit=crop&q=80&w=600',
