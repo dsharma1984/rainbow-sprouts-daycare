@@ -23,11 +23,11 @@ export function Navbar() {
             <header className="fixed top-0 left-0 w-full z-40 bg-white border-b border-slate-100 shadow-sm">
                 <div className="container mx-auto px-4 h-20 flex items-center justify-between">
                     {/* Logo */}
-                    <Link href="/" className="flex items-center gap-2">
+                    <Link href="/" className="flex items-center gap-2 mx-auto md:mx-0">
                         <img
                             src="/images/logo-full.png"
                             alt="Rainbow Sprouts"
-                            className="h-auto w-[140px] md:w-[200px] object-contain mix-blend-multiply"
+                            className="h-10 md:h-auto w-auto md:w-[200px] object-contain mix-blend-multiply scale-150 md:scale-100"
                         />
                     </Link>
 
@@ -51,7 +51,7 @@ export function Navbar() {
 
                     {/* Mobile Menu Toggle */}
                     <button
-                        className="md:hidden p-2 text-gray-600"
+                        className="md:hidden absolute left-4 p-2 text-gray-600"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                     >
                         {isMenuOpen ? <X /> : <Menu />}
