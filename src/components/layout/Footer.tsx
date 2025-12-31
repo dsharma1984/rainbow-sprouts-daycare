@@ -4,7 +4,7 @@ import { IMAGES } from '@/config/images';
 
 export function Footer() {
     return (
-        <footer className="bg-slate-900 text-slate-300 py-12 md:py-16">
+        <footer className="bg-slate-900 text-slate-300 pt-12 pb-32 md:py-16">
             <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-12">
                 {/* Brand */}
                 <div>

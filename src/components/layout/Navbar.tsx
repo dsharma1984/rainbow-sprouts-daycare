@@ -20,14 +20,14 @@ export function Navbar() {
 
     return (
         <>
-            <header className="fixed top-0 left-0 w-full z-40 bg-white border-b border-slate-100 shadow-sm">
-                <div className="container mx-auto px-4 h-20 flex items-center justify-between">
+            <header className="fixed top-0 left-0 w-full z-40 bg-white border-b border-slate-100 shadow-sm transition-all duration-300">
+                <div className="container mx-auto px-4 h-22 md:h-20 flex items-center justify-between">
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-2 mx-auto md:mx-0">
                         <img
                             src="/images/logo-full.png"
                             alt="Rainbow Sprouts"
-                            className="h-10 md:h-auto w-auto md:w-[200px] object-contain mix-blend-multiply scale-150 md:scale-100"
+                            className="w-[220px] md:w-[200px] h-auto object-contain mix-blend-multiply transition-all duration-300 transform translate-y-1"
                         />
                     </Link>
 
@@ -76,7 +76,7 @@ export function Navbar() {
             </header>
 
             {/* Spacer for fixed header */}
-            <div className="h-20" />
+            <div className="h-22 md:h-20" />
 
             {/* Mobile Sticky Bottom Bar */}
             <div className="md:hidden fixed bottom-0 left-0 w-full bg-white border-t border-slate-200 p-4 z-40 flex gap-3 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">

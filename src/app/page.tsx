@@ -42,7 +42,7 @@ const TestimonialCarousel = () => {
   }, [isPaused]);
 
   return (
-    <SectionWrapper background="soft" withWaveTop withWaveBottom className="py-12 md:py-32 overflow-hidden">
+    <SectionWrapper background="soft" withWaveTop withWaveBottom className="py-8 md:py-32 overflow-hidden">
       <div className="text-center mb-8 md:mb-16 relative">
         {/* Rainbow Motif */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-32 -z-10 opacity-20 pointer-events-none">
@@ -81,7 +81,7 @@ const TestimonialCarousel = () => {
           style={{ scrollBehavior: 'smooth' }}
         >
           {[
-            { name: "Priya Sharma", role: "Mother of Aarav, 3", text: "The best decision we made for our son. The teachers are so caring and the live CCTV gives us such peace of mind.", img: "https://i.pravatar.cc/150?u=priya" },
+            { name: "Priya Sharma", role: "Mother of Aarav, 3", text: "The best decision we made for our son. The teachers are so caring and the live CCTV gives us such peace of mind.", img: "https://images.unsplash.com/photo-1607506548777-6d30492934eb?auto=format&fit=crop&q=80&w=200" },
             { name: "Rahul Verma", role: "Father of Diya, 4", text: "My daughter loves going to Rainbow Sprouts. The activities are creative and she has learned so much in just 6 months!", img: "https://i.pravatar.cc/150?u=rahul" },
             { name: "Anjali Gupta", role: "Mother of Kabier, 2", text: "Clean, safe, and nurturing environment. The layout and facilities are top-notch. Highly recommended!", img: "https://i.pravatar.cc/150?u=anjali" },
             { name: "Vikram Singh", role: "Father of Meera, 5", text: "The transparent communication is what I love most. I feel completely connected to my child's day.", img: "https://i.pravatar.cc/150?u=vikram" },
@@ -147,7 +147,7 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-0 md:pt-4 lg:pt-8 pb-12 md:pb-32 bg-[linear-gradient(135deg,#FFFCF5_0%,#FFF5F5_50%,#F0F9FF_100%)]">
+      <section className="relative overflow-hidden pt-0 md:pt-4 lg:pt-8 pb-6 md:pb-32 bg-[linear-gradient(135deg,#FFFCF5_0%,#FFF5F5_50%,#F0F9FF_100%)]">
         <div className="container mx-auto px-4 flex flex-col-reverse md:grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -228,12 +228,11 @@ export default function Home() {
               <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity, delay: 1 }} className="absolute -top-4 -left-4 text-accent text-4xl z-20">✨</motion.div>
               <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 5, repeat: Infinity, delay: 0.5 }} className="absolute bottom-10 -right-8 text-primary text-3xl z-20">✦</motion.div>
 
-              {/* Trusted Badge */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1 }}
-                className="absolute -bottom-6 -left-6 bg-white py-3 px-5 rounded-2xl shadow-xl border-4 border-yellow-200 z-30 flex items-center gap-3"
+                className="absolute -bottom-8 left-1/2 -translate-x-1/2 md:translate-x-0 md:left-auto md:-bottom-6 md:-left-6 bg-white py-3 px-5 rounded-2xl shadow-xl border-4 border-yellow-200 z-30 flex items-center gap-3 w-[max-content]"
               >
                 <div className="bg-green-100 p-2 rounded-full text-green-600">
                   <ShieldCheck className="w-6 h-6" />
@@ -264,7 +263,7 @@ export default function Home() {
       </section>
 
       {/* Programs at a Glance - Gateway to Discovery */}
-      <section className="-mt-12 md:-mt-20 relative z-20 pb-20">
+      <section className="-mt-12 md:-mt-20 relative z-20 pb-8 md:pb-20">
         <div className="container mx-auto px-4">
           <motion.div
             initial="hidden"
@@ -350,7 +349,7 @@ export default function Home() {
       <TestimonialCarousel />
 
       {/* Quick Facts Strip - Brand Yellow Pop */}
-      <div className="bg-yellow-400 py-8 md:py-16 mb-12 md:mb-24 text-gray-900 shadow-xl relative z-20 mx-4 md:mx-10 rounded-[2rem] md:rounded-[3rem] -mt-10 overflow-hidden">
+      <div className="bg-yellow-400 py-6 md:py-16 mb-8 md:mb-24 text-gray-900 shadow-xl relative z-20 mx-4 md:mx-10 rounded-[2rem] md:rounded-[3rem] -mt-6 md:-mt-10 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white to-transparent"></div>
         <div className="container mx-auto px-4 relative">
           <div className="grid grid-cols-2 md:flex md:flex-row justify-center md:justify-around items-center gap-6 md:gap-12 text-center md:text-left text-lg md:text-xl font-heading font-bold tracking-wide">
@@ -374,7 +373,7 @@ export default function Home() {
       </div>
 
       {/* Trust Section - The Emotional Core */}
-      <SectionWrapper background="white" withWaveTop withWaveBottom className="py-12 md:py-24">
+      <SectionWrapper background="white" withWaveTop withWaveBottom className="py-8 md:py-24">
         <div className="text-center mb-10 md:mb-16">
           <h2 className="text-4xl md:text-6xl font-bold mb-4 text-gray-900">Why Parents Trust Us</h2>
           <p className="text-gray-500 text-xl max-w-2xl mx-auto font-medium">Built for working parents who want a homely yet professional daycare.</p>
@@ -417,7 +416,7 @@ export default function Home() {
 
 
       {/* Founder Teaser - The Heart */}
-      <section className="py-12 md:py-20 bg-gradient-to-b from-white to-orange-50 relative overflow-hidden">
+      <section className="py-8 md:py-20 bg-gradient-to-b from-white to-orange-50 relative overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center gap-12 max-w-5xl mx-auto">
             <div className="w-full md:w-1/2 relative group">
@@ -451,7 +450,7 @@ export default function Home() {
       </section>
 
       {/* Life at Rainbow Sprouts - Gallery Tease */}
-      <section className="py-12 md:py-20 bg-white">
+      <section className="py-8 md:py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Life at Rainbow Sprouts</h2>
@@ -474,7 +473,7 @@ export default function Home() {
       </section>
 
       {/* Map Section */}
-      <section className="py-12 md:py-20 bg-white">
+      <section className="py-8 md:py-20 bg-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-10">Visit Us</h2>
           <div className="rounded-3xl overflow-hidden shadow-2xl h-[400px] border-4 border-white max-w-5xl mx-auto relative bg-slate-100">

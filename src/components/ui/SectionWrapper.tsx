@@ -57,7 +57,7 @@ export function SectionWrapper({
     // Actually, usually you want the wave to be the color of the section.
 
     return (
-        <section id={id} className={cn('relative py-16 md:py-24', bgColors[background], className)}>
+        <section id={id} className={cn('relative py-8 md:py-24', bgColors[background], className)}>
             {withWaveTop && <WavyDividerRaw className="-mt-[49px] md:-mt-[79px]" flip={false} />}
 
             <div className="container mx-auto px-4 max-w-7xl relative z-10">
