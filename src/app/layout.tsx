@@ -25,6 +25,10 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://rainbowsprouts.in"),
+  alternates: {
+    canonical: "https://rainbowsprouts.in",
+  },
   title: "Rainbow Sprouts Daycare",
   description: "A premium learning experience for your child. Sector 10, Gurgaon.",
 };
