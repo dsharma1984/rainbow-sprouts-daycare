@@ -1,36 +1,123 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Rainbow Sprouts Daycare Website
 
-## Getting Started
+Official website for **Rainbow Sprouts Daycare & Playschool**, Sector 10, Gurgaon.
 
-First, run the development server:
+Built as a high-quality, mobile-first brochure website with strong conversion focus
+(Call / WhatsApp / Book a Visit).
 
+---
+
+## 🧰 Tech Stack
+- **Next.js 14** (App Router)
+- **React 18**
+- **Tailwind CSS**
+- **Framer Motion**
+- **Vercel** (Hosting & CI/CD)
+
+---
+
+## 🚀 Live Website
+https://rainbowsprouts.in
+
+---
+
+## 📂 Project Structure (High Level)
+
+
+---
+
+## ▶️ How to Run Locally
+
+### 1. Clone the repository
 ```bash
+git clone https://github.com/dsharma1984/rainbow-sprouts-daycare.git
+cd rainbow-sprouts-daycare
+src/
+├─ app/ # App Router pages
+├─ components/ # Reusable UI & layout components
+├─ config/ # Centralized config (images, site data)
+├─ styles/ # Global styles
+public/
+├─ images/ # Logos & static assets
+
+
+---
+
+## ▶️ How to Run Locally
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/dsharma1984/rainbow-sprouts-daycare.git
+cd rainbow-sprouts-daycare
+
+2. Install dependencies
+npm install
+
+3. Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Open http://localhost:3000
+ in your browser.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🌐 Deployment
 
-## Learn More
+Automatically deployed via Vercel
 
-To learn more about Next.js, take a look at the following resources:
+Every push to the main branch triggers a new deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Production domain managed via Vercel + Namecheap DNS
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+📞 Contact / Ownership
 
-## Deploy on Vercel
+Client: Kamini Rajotia
+Location: Sector 10, Gurgaon
+Phone: +91 81990 62496
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+✅ This is **clean, client-safe, and portfolio-ready**.
+
+---
+
+## B) Add / Verify `.gitignore` (Next.js default)
+
+### Where
+- Root of the repo
+- File name: **.gitignore**
+
+### What it should contain (copy–paste)
+
+```gitignore
+# dependencies
+/node_modules
+
+# Next.js
+/.next
+/out
+
+# production
+/build
+
+# env files
+.env
+.env.local
+.env.development
+.env.production
+.env*.local
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Vercel
+.vercel
