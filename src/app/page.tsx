@@ -479,7 +479,7 @@ export default function Home() {
           <div className="rounded-3xl overflow-hidden shadow-2xl h-[400px] border-4 border-white max-w-5xl mx-auto relative bg-slate-100">
             {/* Embed Google Map Placeholder */}
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14032.535804567298!2d77.017!3d28.448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d19d582e38859%3A0x2cf5fe8e5c64b1e!2sSector%2010%2C%20Gurugram%2C%20Haryana!5e0!3m2!1sen!2sin!4v1703607777777!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3506.6!2d77.0333116!3d28.4665886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sFX3W%2BF3%20Gurugram%2C%20Haryana!5e0!3m2!1sen!2sin"
               width="100%"
               height="100%"
               style={{ border: 0 }}
