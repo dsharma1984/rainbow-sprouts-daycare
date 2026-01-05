@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fredoka, Poppins, Playfair_Display } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -43,6 +44,19 @@ export default function RootLayout({
       <body
         className={`${fredoka.variable} ${poppins.variable} ${playfair.variable} antialiased font-body bg-background text-gray-700 flex flex-col min-h-screen`}
       >
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-BYXSYDPQN0"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-BYXSYDPQN0');
+          `}
+        </Script>
         <TopBar />
         <Navbar />
         <main className="flex-grow pt-20">
