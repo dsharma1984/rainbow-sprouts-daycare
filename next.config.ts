@@ -15,4 +15,5 @@ const nextConfig: NextConfig = {
   },
 };
 
+// Forcing deployment update
 export default nextConfig;
