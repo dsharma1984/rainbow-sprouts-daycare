@@ -130,7 +130,7 @@ export default function ContactPage() {
                                             <p className="font-bold text-gray-900 text-lg mb-1">Visit Us</p>
                                             <p className="text-gray-600 leading-relaxed">Sector 10, Gurgaon<br />(Near Civil Hospital)</p>
                                             <a
-                                                href="https://www.google.com/maps/dir/?api=1&destination=FX3W%2BF3+Gurugram%2C+Haryana"
+                                                href="https://maps.app.goo.gl/PBCEYpAEtRFsamQP7"
                                                 target="_blank"
                                                 className="inline-flex items-center text-sm font-bold text-blue-500 mt-2 hover:underline link-underline"
                                             >
@@ -206,14 +206,14 @@ export default function ContactPage() {
                     className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white h-[400px] bg-slate-100"
                 >
                     {/* Overlay Button */}
-                    <a href="https://www.google.com/maps/dir/?api=1&destination=FX3W%2BF3+Gurugram%2C+Haryana" target="_blank" className="absolute top-6 right-6 z-10">
+                    <a href="https://maps.app.goo.gl/PBCEYpAEtRFsamQP7" target="_blank" className="absolute top-6 right-6 z-10">
                         <Button variant="primary" size="sm" className="shadow-lg rounded-full text-sm font-bold">
                             Open in Google Maps <ExternalLink className="w-4 h-4 ml-2" />
                         </Button>
                     </a>
 
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3506.6!2d77.0333116!3d28.4665886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sFX3W%2BF3%20Gurugram%2C%20Haryana!5e0!3m2!1sen!2sin"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.8577003245023!2d76.9951409!3d28.4537057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d17a0ae450437%3A0xd13a807bc964f1c9!2sRainbow%20Sprouts%20Daycare%20%26%20Play%20School!5e0!3m2!1sen!2sin"
                         width="100%"
                         height="100%"
                         style={{ border: 0 }}
