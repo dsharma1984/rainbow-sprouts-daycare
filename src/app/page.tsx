@@ -295,7 +295,7 @@ export default function Home() {
               },
               {
                 title: 'Daycare',
-                age: '1+ Years',
+                age: '2+ Years',
                 features: ['Nutritious Meals', 'Peaceful Naps', 'Flexible Hours'],
                 link: 'daycare',
                 theme: 'from-yellow-50 to-yellow-100 border-yellow-200 text-yellow-900',
@@ -358,7 +358,7 @@ export default function Home() {
             </div>
             <div className="hidden md:block h-8 w-px bg-yellow-600/20"></div>
             <div className="flex flex-col md:flex-row items-center gap-3">
-              <span className="text-2xl">👶</span> Ages 1 - 7 Years
+              <span className="text-2xl">👶</span> Ages 2 - 7 Years
             </div>
             <div className="hidden md:block h-8 w-px bg-yellow-600/20"></div>
             <div className="flex flex-col md:flex-row items-center gap-3">

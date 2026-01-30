@@ -28,7 +28,7 @@ export default function ProgramsPage() {
     const careServices = [
         {
             title: "Daycare",
-            age: "1+ Years",
+            age: "2+ Years",
             desc: "A warm, loving home-away-from-home where children are cared for like family.",
             features: ["Nutritious Home-Cooked Meals", "Dedicated Nap Rooms", "Evening Activities (Art/Dance)", "Flexible Timings (8:30 - 6:30)"],
             image: IMAGES.daycare,
