@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Menu, X, Phone, MessageCircle } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { BookTourModal } from '../ui/BookTourModal';
+import { TopBar } from './TopBar';
 
 export function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,7 +21,7 @@ export function Navbar() {
 
     return (
         <>
-            <header className="fixed top-0 left-0 w-full z-40 bg-white border-b border-slate-100 shadow-sm transition-all duration-300">
+            <header className="sticky top-0 left-0 w-full z-40 bg-white border-b border-slate-100 shadow-sm transition-all duration-300">
                 <div className="container mx-auto px-4 h-22 md:h-20 flex items-center justify-between">
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-2 mx-auto md:mx-0">
@@ -58,6 +59,8 @@ export function Navbar() {
                     </button>
                 </div>
 
+                <TopBar />
+
                 {/* Mobile Menu */}
                 {isMenuOpen && (
                     <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 shadow-lg py-4 flex flex-col items-center gap-4">
@@ -75,8 +78,7 @@ export function Navbar() {
                 )}
             </header>
 
-            {/* Spacer for fixed header */}
-            <div className="h-22 md:h-20" />
+
 
             {/* Mobile Sticky Bottom Bar */}
             <div className="md:hidden fixed bottom-0 left-0 w-full bg-white border-t border-slate-200 p-4 z-40 flex gap-3 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">

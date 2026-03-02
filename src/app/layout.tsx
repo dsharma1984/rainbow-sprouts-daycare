@@ -4,8 +4,6 @@ import Script from "next/script";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { TopBar } from "@/components/layout/TopBar";
-
 const fredoka = Fredoka({
   variable: "--font-fredoka",
   subsets: ["latin"],
@@ -57,7 +55,6 @@ export default function RootLayout({
             gtag('config', 'G-BYXSYDPQN0');
           `}
         </Script>
-        <TopBar />
         <Navbar />
         <main className="flex-grow pt-20">
           {children}
