@@ -1,25 +1,30 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { SectionWrapper } from '@/components/ui/SectionWrapper';
-import { IMAGES } from '@/config/images';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ZoomIn, ChevronLeft, ChevronRight } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
+import { X, ZoomIn, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react';
+import { client } from '@/sanity/client';
 
 export default function GalleryPage() {
     const [selectedImage, setSelectedImage] = useState<{ src: string, caption: string } | null>(null);
+    const [galleryImages, setGalleryImages] = useState<{ src: string, caption: string }[]>([]);
+    const [loading, setLoading] = useState(true);
 
-    const galleryImages = [
-        { src: IMAGES.gallery1, caption: "Creative Play Time" },
-        { src: IMAGES.gallery2, caption: "Outdoor Adventures" },
-        { src: IMAGES.gallery3, caption: "Learning New Things" },
-        { src: IMAGES.gallery4, caption: "Group Activities" },
-        { src: IMAGES.gallery5, caption: "Art & Craft Fun" },
-        { src: IMAGES.gallery6, caption: "Celebrations & Joy" },
-        { src: IMAGES.toddler, caption: "Early Steps" },
-        { src: IMAGES.playgroup, caption: "Making Friends" }
-    ];
+    useEffect(() => {
+        async function fetchGallery() {
+            try {
+                const query = `*[_type == "gallery"] | order(_createdAt desc) { "src": image.asset->url, "caption": alt }`;
+                const data = await client.fetch(query);
+                setGalleryImages(data);
+            } catch (error) {
+                console.error("Error fetching gallery images from Sanity:", error);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchGallery();
+    }, []);
 
     const openLightbox = (img: { src: string, caption: string }) => setSelectedImage(img);
     const closeLightbox = () => setSelectedImage(null);
@@ -35,8 +40,8 @@ export default function GalleryPage() {
     };
 
     return (
-        <div className="bg-slate-50 min-h-screen pt-20">
-            <SectionWrapper background="white" withWaveBottom>
+        <div className="bg-slate-50 min-h-screen">
+            <SectionWrapper background="white">
                 <div className="text-center mb-16">
                     <motion.h1
                         initial={{ opacity: 0, y: -20 }}
@@ -59,33 +64,44 @@ export default function GalleryPage() {
                     </motion.p>
                 </div>
 
-                <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6 px-4">
-                    {galleryImages.map((img, idx) => (
-                        <motion.div
-                            key={`gallery-item-${idx}`}
-                            layoutId={`image-${img.src}`}
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: idx * 0.1 }}
-                            onClick={() => openLightbox(img)}
-                            className="break-inside-avoid rounded-3xl overflow-hidden shadow-md cursor-zoom-in group relative border-4 border-white transform transition-all duration-500 hover:shadow-[0_20px_50px_rgba(74,159,181,0.2)]"
-                        >
-                            <motion.img
-                                src={img.src}
-                                alt={img.caption}
-                                className="w-full h-auto transition-transform duration-700 group-hover:scale-110"
-                            />
+                {loading ? (
+                    <div className="flex justify-center flex-col items-center py-32 space-y-4">
+                        <Loader2 className="w-12 h-12 animate-spin text-primary opacity-80" />
+                        <p className="text-gray-500 font-medium">Developing magical photos...</p>
+                    </div>
+                ) : galleryImages.length === 0 ? (
+                    <div className="text-center py-32 text-gray-500 text-xl font-medium">
+                        No photos added up yet! Check back soon or visit our Instagram.
+                    </div>
+                ) : (
+                    <div className="columns-2 sm:columns-3 md:columns-4 lg:columns-5 gap-3 sm:gap-4 lg:gap-6 space-y-3 sm:space-y-4 lg:space-y-6 px-2 sm:px-4 pb-20">
+                        {galleryImages.map((img, idx) => (
+                            <motion.div
+                                key={`gallery-item-${idx}`}
+                                layoutId={`image-${img.src}`}
+                                initial={{ opacity: 0, y: 50 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: (idx % 6) * 0.1 }}
+                                onClick={() => openLightbox(img)}
+                                className="break-inside-avoid rounded-3xl overflow-hidden shadow-md cursor-zoom-in group relative border-4 border-white transform transition-all duration-500 hover:shadow-[0_20px_50px_rgba(74,159,181,0.2)]"
+                            >
+                                <motion.img
+                                    src={img.src}
+                                    alt={img.caption}
+                                    className="w-full h-auto transition-transform duration-700 group-hover:scale-110"
+                                />
 
-                            {/* Magical Overlay on Hover */}
-                            <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
-                                <div className="bg-white/90 p-3 rounded-full shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300 delay-100">
-                                    <ZoomIn className="w-6 h-6 text-primary" />
+                                {/* Magical Overlay on Hover */}
+                                <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
+                                    <div className="bg-white/90 p-3 rounded-full shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300 delay-100">
+                                        <ZoomIn className="w-6 h-6 text-primary" />
+                                    </div>
                                 </div>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                )}
             </SectionWrapper>
 
             {/* Lightbox / Modal */}

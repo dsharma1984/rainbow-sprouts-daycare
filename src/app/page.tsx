@@ -1,46 +1,19 @@
 "use client";
 
-import { useRef, useEffect, useState } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/Button';
 import { SectionWrapper } from '@/components/ui/SectionWrapper';
 import { Card } from '@/components/ui/Card';
 import { ShieldCheck, Utensils, Users, Award, Sun, ArrowRight, Star, Phone } from 'lucide-react';
 import { IMAGES } from '@/config/images';
-import Image from 'next/image';
 import Link from 'next/link';
+import InstagramGrid from '@/components/InstagramGrid';
+import { client } from '@/sanity/client';
 
 // Testimonial Carousel Component
 const TestimonialCarousel = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [isPaused, setIsPaused] = useState(false);
-
-  useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    if (!scrollContainer) return;
-
-    let scrollInterval: NodeJS.Timeout;
-
-    const startAutoScroll = () => {
-      scrollInterval = setInterval(() => {
-        if (isPaused) return;
-
-        // Scroll width of one card + gap (approx)
-        const scrollAmount = 300;
-        const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
-
-        if (scrollContainer.scrollLeft >= maxScroll - 50) {
-          scrollContainer.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-          scrollContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-        }
-      }, 5000);
-    };
-
-    startAutoScroll();
-    return () => clearInterval(scrollInterval);
-  }, [isPaused]);
-
+  // Mobile-friendly, native horizontal snap scrolling without aggressive JS interrupts
   return (
     <SectionWrapper background="soft" withWaveTop withWaveBottom className="py-8 md:py-32 overflow-hidden">
       <div className="text-center mb-8 md:mb-16 relative">
@@ -76,7 +49,6 @@ const TestimonialCarousel = () => {
         <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#FFF8F0] to-transparent z-10 pointer-events-none hidden md:block"></div>
 
         <div
-          ref={scrollRef}
           className="flex overflow-x-auto pb-12 pt-4 px-4 md:px-0 gap-6 md:gap-8 snap-x snap-mandatory scrollbar-hide"
           style={{ scrollBehavior: 'smooth' }}
         >
@@ -126,6 +98,25 @@ const TestimonialCarousel = () => {
 };
 
 export default function Home() {
+  const [recentGallery, setRecentGallery] = useState<string[]>([
+    IMAGES.gallery1, IMAGES.gallery2, IMAGES.gallery3, IMAGES.gallery4
+  ]);
+
+  useEffect(() => {
+    async function fetchRecentGallery() {
+      try {
+        const query = `*[_type == "gallery"] | order(_createdAt desc)[0...4] { "src": image.asset->url }`;
+        const data = await client.fetch(query);
+        if (data && data.length > 0) {
+          setRecentGallery(data.map((item: any) => item.src));
+        }
+      } catch (error) {
+        console.error("Failed to fetch recent gallery images:", error);
+      }
+    }
+    fetchRecentGallery();
+  }, []);
+
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
@@ -148,7 +139,12 @@ export default function Home() {
     <>
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-0 md:pt-4 lg:pt-8 pb-6 md:pb-32 bg-[linear-gradient(135deg,#FFFCF5_0%,#FFF5F5_50%,#F0F9FF_100%)]">
-        <div className="container mx-auto px-4 flex flex-col-reverse md:grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        {/* Parallax Floating Clouds/Blobs - Hidden on mobile to reduce noise */}
+        <motion.div animate={{ x: [-20, 20, -20], y: [-10, 15, -10] }} transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }} className="absolute top-10 left-10 w-48 h-48 bg-yellow-200/40 rounded-full blur-3xl hidden md:block" />
+        <motion.div animate={{ x: [20, -10, 20], y: [10, -20, 10] }} transition={{ duration: 25, repeat: Infinity, ease: 'easeInOut' }} className="absolute bottom-20 right-10 w-64 h-64 bg-teal-200/30 rounded-full blur-3xl opacity-50 hidden md:block" />
+        <motion.div animate={{ x: [-30, 10, -30], y: [30, -10, 30] }} transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }} className="absolute top-1/2 left-1/3 w-72 h-72 bg-pink-200/20 rounded-full blur-3xl hidden md:block" />
+
+        <div className="container mx-auto px-4 flex flex-col-reverse md:grid md:grid-cols-2 gap-8 md:gap-12 items-center relative z-10">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -189,15 +185,19 @@ export default function Home() {
             </ul>
 
             <div className="flex flex-col sm:flex-row gap-5">
-              <Link href="/contact">
-                <Button variant="primary" size="lg" className="rounded-full shadow-[0_4px_14px_rgba(255,107,91,0.4)] hover:shadow-[0_8px_25px_rgba(255,107,91,0.5)] px-10 py-4 text-lg w-full sm:w-auto hover:-translate-y-1 transition-all">
-                  <Star className="w-5 h-5 mr-2 fill-current" /> Book a Visit
-                </Button>
+              <Link href="/contact" className="w-full sm:w-auto">
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95, y: 5 }} transition={{ type: "spring", stiffness: 400, damping: 17 }}>
+                  <Button variant="primary" size="lg" className="rounded-full shadow-[0_10px_30px_rgba(255,107,91,0.3)] hover:shadow-[0_15px_40px_rgba(255,107,91,0.5)] px-10 py-[1.125rem] text-lg w-full sm:w-auto font-bold border-2 border-transparent">
+                    <Star className="w-5 h-5 mr-2 fill-current" /> Book a Visit
+                  </Button>
+                </motion.div>
               </Link>
-              <a href="tel:+918199062496">
-                <Button variant="outline" size="lg" className="rounded-full w-full sm:w-auto border-2 hover:bg-primary/5">
-                  <Phone className="w-5 h-5 mr-2" /> Call Now
-                </Button>
+              <a href="tel:+918199062496" className="w-full sm:w-auto">
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95, y: 5 }} transition={{ type: "spring", stiffness: 400, damping: 17 }}>
+                  <Button variant="outline" size="lg" className="rounded-full w-full sm:w-auto border-2 border-gray-200 hover:border-gray-300 hover:bg-gray-50 px-10 py-[1.125rem] text-lg font-bold">
+                    <Phone className="w-5 h-5 mr-2" /> Call Now
+                  </Button>
+                </motion.div>
               </a>
             </div>
 
@@ -272,7 +272,7 @@ export default function Home() {
             variants={{
               visible: { transition: { staggerChildren: 0.15 } }
             }}
-            className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 pb-8 md:pb-0 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0"
+            className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 pb-8 md:pb-0 scrollbar-hide -mx-4 px-8 md:mx-0 md:px-0"
           >
             {[
               {
@@ -295,7 +295,7 @@ export default function Home() {
               },
               {
                 title: 'Daycare',
-                age: '2+ Years',
+                age: '1+ Years',
                 features: ['Nutritious Meals', 'Peaceful Naps', 'Flexible Hours'],
                 link: 'daycare',
                 theme: 'from-yellow-50 to-yellow-100 border-yellow-200 text-yellow-900',
@@ -304,7 +304,7 @@ export default function Home() {
               },
               {
                 title: 'After-School',
-                age: '2-7 Years',
+                age: '3-7 Years',
                 features: ['Homework Help', 'Hobby Classes', 'Safe Environment'],
                 link: 'after-school',
                 theme: 'from-blue-50 to-blue-100 border-blue-200 text-blue-900',
@@ -348,65 +348,83 @@ export default function Home() {
       {/* Testimonials - Moved Up for Mobile Impact */}
       <TestimonialCarousel />
 
-      {/* Quick Facts Strip - Brand Yellow Pop */}
-      <div className="bg-yellow-400 py-6 md:py-16 mb-8 md:mb-24 text-gray-900 shadow-xl relative z-20 mx-4 md:mx-10 rounded-[2rem] md:rounded-[3rem] -mt-6 md:-mt-10 overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white to-transparent"></div>
-        <div className="container mx-auto px-4 relative">
-          <div className="grid grid-cols-2 md:flex md:flex-row justify-center md:justify-around items-center gap-6 md:gap-12 text-center md:text-left text-lg md:text-xl font-heading font-bold tracking-wide">
-            <div className="flex flex-col md:flex-row items-center gap-3">
-              <span className="text-2xl">🕒</span> 8:30 AM - 6:30 PM
-            </div>
-            <div className="hidden md:block h-8 w-px bg-yellow-600/20"></div>
-            <div className="flex flex-col md:flex-row items-center gap-3">
-              <span className="text-2xl">👶</span> Ages 2 - 7 Years
-            </div>
-            <div className="hidden md:block h-8 w-px bg-yellow-600/20"></div>
-            <div className="flex flex-col md:flex-row items-center gap-3">
-              <span className="text-2xl">👩‍🏫</span> 1:8 Ratio
-            </div>
-            <div className="hidden md:block h-8 w-px bg-yellow-600/20"></div>
-            <div className="flex flex-col md:flex-row items-center gap-3">
-              <span className="text-2xl">📍</span> Sector 10, Gurgaon
+      {/* Quick Facts Strip - Glassmorphism Pill */}
+      <div className="relative z-30 mx-4 md:mx-10 -mt-8 md:-mt-14 mb-16 md:mb-24">
+        {/* Glowing backdrop */}
+        <div className="absolute inset-0 bg-yellow-300 rounded-[3rem] blur-xl opacity-40"></div>
+        
+        <div className="bg-white/80 backdrop-blur-xl border-2 border-white/60 py-6 md:py-10 text-gray-800 shadow-[0_20px_50px_rgba(244,196,48,0.2)] rounded-[2rem] md:rounded-[3rem] overflow-hidden relative">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-400/20 rounded-full blur-2xl pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 w-32 h-32 bg-teal-400/20 rounded-full blur-2xl pointer-events-none"></div>
+          
+          <div className="container mx-auto px-4 relative">
+            <div className="grid grid-cols-2 lg:flex lg:flex-row justify-center lg:justify-around items-center gap-6 lg:gap-12 text-center text-base md:text-xl font-heading font-bold tracking-wide">
+              <motion.div whileHover={{ y: -5 }} className="flex flex-col md:flex-row items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center text-2xl shadow-inner border border-white">🕒</div> 
+                <span>8:30 AM - 6:30 PM</span>
+              </motion.div>
+              <div className="hidden lg:block h-10 w-[2px] bg-gray-200 rounded-full"></div>
+              
+              <motion.div whileHover={{ y: -5 }} className="flex flex-col md:flex-row items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-pink-100 flex items-center justify-center text-2xl shadow-inner border border-white">👶</div> 
+                <span>Ages 1 - 7 Years</span>
+              </motion.div>
+              <div className="hidden lg:block h-10 w-[2px] bg-gray-200 rounded-full"></div>
+              
+              <motion.div whileHover={{ y: -5 }} className="flex flex-col md:flex-row items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-2xl shadow-inner border border-white">👩‍🏫</div> 
+                <span>1:8 Teach Ratio</span>
+              </motion.div>
+              <div className="hidden lg:block h-10 w-[2px] bg-gray-200 rounded-full"></div>
+              
+              <motion.div whileHover={{ y: -5 }} className="flex flex-col md:flex-row items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-2xl shadow-inner border border-white">📍</div> 
+                <span>Sec 10, Gurgaon</span>
+              </motion.div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Trust Section - The Emotional Core */}
-      <SectionWrapper background="white" withWaveTop withWaveBottom className="py-8 md:py-24">
-        <div className="text-center mb-10 md:mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold mb-4 text-gray-900">Why Parents Trust Us</h2>
+      <SectionWrapper background="white" withWaveTop withWaveBottom className="py-8 md:py-24 overflow-hidden relative">
+        {/* Floating background shapes - Hidden on mobile */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl rounded-tr-none pointer-events-none hidden md:block"></div>
+
+        <div className="text-center mb-16 md:mb-24">
+          <h2 className="text-4xl md:text-6xl font-bold mb-4 text-gray-900 font-heading">Why Parents Trust Us</h2>
           <p className="text-gray-500 text-xl max-w-2xl mx-auto font-medium">Built for working parents who want a homely yet professional daycare.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6 px-4 md:px-0 mt-8">
           {[
-            { icon: <ShieldCheck className="w-8 h-8 text-teal-600" />, title: 'Live CCTV Access', desc: 'Watch your child whenever you wish.', highlight: 'Safe. Connected.', bg: 'bg-teal-50 border-teal-100' },
-            { icon: <Utensils className="w-8 h-8 text-orange-600" />, title: 'Home-Cooked Meals', desc: 'Fresh, nutritious food made with love.', highlight: 'Healthy. Yummy.', bg: 'bg-orange-50 border-orange-100' },
-            { icon: <Users className="w-8 h-8 text-yellow-600" />, title: '1:8 Teacher Ratio', desc: 'Every child gets the hug they need.', highlight: 'Personal. Caring.', bg: 'bg-yellow-50 border-yellow-100' },
-            { icon: <Award className="w-8 h-8 text-purple-600" />, title: 'Experienced Staff', desc: 'Mentors who treat kids like their own.', highlight: 'Trained. Loving.', bg: 'bg-purple-50 border-purple-100' },
-            { icon: <Sun className="w-8 h-8 text-green-600" />, title: 'Holistic Play', desc: 'Learning that feels like magic.', highlight: 'Fun. Smart.', bg: 'bg-green-50 border-green-100' },
+            { icon: <ShieldCheck className="w-8 h-8 text-teal-600" />, title: 'Live CCTV Access', desc: 'Watch your child whenever you wish.', highlight: 'Safe. Connected.', bg: 'bg-teal-50 border-teal-200 shadow-[0_15px_30px_rgba(20,184,166,0.15)]', angle: '-rotate-2', delay: 0.1 },
+            { icon: <Utensils className="w-8 h-8 text-orange-600" />, title: 'Home-Cooked Meals', desc: 'Fresh, nutritious food made with love.', highlight: 'Healthy. Yummy.', bg: 'bg-orange-50 border-orange-200 shadow-[0_15px_30px_rgba(249,115,22,0.15)]', angle: 'rotate-3 translate-y-4', delay: 0.2 },
+            { icon: <Users className="w-8 h-8 text-yellow-600" />, title: '1:8 Teacher Ratio', desc: 'Every child gets the hug they need.', highlight: 'Personal. Caring.', bg: 'bg-yellow-50 border-yellow-200 shadow-[0_15px_30px_rgba(234,179,8,0.15)]', angle: '-rotate-1', delay: 0.3 },
+            { icon: <Award className="w-8 h-8 text-purple-600" />, title: 'Experienced Staff', desc: 'Mentors who treat kids like their own.', highlight: 'Trained. Loving.', bg: 'bg-purple-50 border-purple-200 shadow-[0_15px_30px_rgba(168,85,247,0.15)]', angle: 'rotate-2 translate-y-2', delay: 0.4 },
+            { icon: <Sun className="w-8 h-8 text-green-600" />, title: 'Holistic Play', desc: 'Learning that feels like magic.', highlight: 'Fun. Smart.', bg: 'bg-green-50 border-green-200 shadow-[0_15px_30px_rgba(34,197,94,0.15)]', angle: '-rotate-3', delay: 0.5 },
           ].map((item, idx) => (
             <motion.div
               key={idx}
-              {...fadeInUp}
-              transition={{ delay: idx * 0.1 }}
-              className={idx > 2 ? 'hidden md:block' : ''}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: item.delay, type: "spring" }}
+              className={`pt-6 ${idx > 2 ? 'hidden md:block lg:block' : ''}`}
             >
-              <Card className={`h-full flex flex-col items-center text-center p-6 border-2 ${item.bg} hover:border-primary/30 transition-colors duration-300 group`}>
-                <div className="w-20 h-20 rounded-full bg-white shadow-md flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 border-4 border-white">
-                  {/* Clone element to increase size on the fly if possible, or just scale via CSS text-class above. 
-                      Actually better to just perform a direct replacement of the icon size props in the mapping above would be hard within one chunk.
-                      Instead, I will rely on CSS scaling or simply wrapper size. 
-                      Let's use `scale-150` on the icon wrapper children? Disadvantageous.
-                      Better: I'll accept the icon as is, but since I define it above with w-8 h-8, I should have changed those props in the array mapping. 
-                      I will update the array mapping right now in this chunk.
-                  */}
-                  <div className="scale-[1.5] transform">{item.icon}</div>
+              <Card className={`h-full flex flex-col items-center text-center p-6 border-4 border-white ${item.bg} hover:border-white transition-all duration-300 group transform ${item.angle} hover:rotate-0 hover:-translate-y-4 hover:scale-105 hover:z-10 relative`}>
+                
+                {/* 3D chunky badge container */}
+                <div className="w-24 h-24 rounded-[1.5rem] bg-white shadow-[0_8px_15px_rgba(0,0,0,0.05),0_0_0_4px_white] flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 transform -translate-y-12 shrink-0">
+                  <div className="scale-[1.8] transform bg-gray-50/50 p-2 rounded-xl">{item.icon}</div>
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-gray-800">{item.title}</h3>
-                <p className="text-gray-600 text-sm mb-4 leading-relaxed flex-grow hidden md:block">{item.desc}</p>
-                <span className="text-xs font-bold uppercase tracking-widest text-primary">{item.highlight}</span>
+                
+                <h3 className="text-2xl font-bold mb-3 text-gray-800 font-heading -mt-6">{item.title}</h3>
+                <p className="text-gray-600 text-[15px] mb-6 leading-relaxed flex-grow hidden md:block">{item.desc}</p>
+                
+                <div className="w-full pt-4 border-t-2 border-white/60">
+                   <span className="text-sm font-bold uppercase tracking-widest text-primary mix-blend-multiply opacity-80">{item.highlight}</span>
+                </div>
               </Card>
             </motion.div>
           ))}
@@ -457,8 +475,8 @@ export default function Home() {
             <p className="text-xl text-gray-500">Every day is a new adventure.</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {[IMAGES.gallery1, IMAGES.gallery2, IMAGES.gallery3, IMAGES.gallery4].map((img, i) => (
-              <Link href="/gallery" key={i} className="block group relative overflow-hidden rounded-2xl aspect-square shadow-md">
+            {recentGallery.slice(0, 4).map((img, i) => (
+              <Link href="/gallery" key={i} className="block group relative overflow-hidden rounded-2xl aspect-square shadow-md bg-slate-100">
                 <img src={img} alt="Gallery" className="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors"></div>
               </Link>
@@ -472,25 +490,36 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Instagram Feed Integration */}
+      <section className="py-8 md:py-16 bg-gradient-to-br from-purple-50 to-white">
+        <InstagramGrid />
+      </section>
+
       {/* Map Section */}
-      <section className="py-8 md:py-20 bg-white">
+      <section className="py-8 md:py-24 bg-gradient-to-t from-gray-50 to-white relative">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-10">Visit Us</h2>
-          <div className="rounded-3xl overflow-hidden shadow-2xl h-[400px] border-4 border-white max-w-5xl mx-auto relative bg-slate-100">
-            {/* Embed Google Map Placeholder */}
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 font-heading">Find the Magic</h2>
+          <p className="text-xl text-gray-500 mb-12">Come visit us in Sector 10, Gurgaon.</p>
+          <div className="rounded-[3rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.1)] h-[400px] border-8 border-white max-w-5xl mx-auto relative bg-slate-100 group">
+            {/* Playful map frame overlap - Hidden on mobile */}
+            <div className="absolute -top-6 -left-6 bg-yellow-400 w-24 h-24 rounded-full blur-2xl opacity-50 pointer-events-none group-hover:scale-150 transition-transform duration-1000 z-10 hidden md:block"></div>
+            <div className="absolute -bottom-6 -right-6 bg-teal-400 w-24 h-24 rounded-full blur-2xl opacity-50 pointer-events-none group-hover:scale-150 transition-transform duration-1000 z-10 hidden md:block"></div>
+
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.8577003245023!2d76.9951409!3d28.4537057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d17a0ae450437%3A0xd13a807bc964f1c9!2sRainbow%20Sprouts%20Daycare%20%26%20Play%20School!5e0!3m2!1sen!2sin"
               width="100%"
               height="100%"
-              style={{ border: 0 }}
+              style={{ border: 0, filter: 'contrast(1.1) saturate(1.2)' }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               title="Google Map"
+              className="relative z-0"
             ></iframe>
           </div>
         </div>
       </section>
+
     </>
   );
 }

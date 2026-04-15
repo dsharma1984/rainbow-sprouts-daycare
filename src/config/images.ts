@@ -7,9 +7,10 @@ export const IMAGES = {
 
   // Programs
   toddler: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&q=80&w=800', // Playground
-  playgroup: 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&q=80&w=800', // Reading
-  nursery: 'https://images.unsplash.com/photo-1596464716127-f9a063995d54?auto=format&fit=crop&q=80&w=800', // Blocks/Indoor
+  playgroup: '/images/playgroup_activity.jpg', // Ball sorting activity
+  nursery: '/images/nursery_class.jpg', // Teacher with kids peace sign
   daycare: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=800', // Happy kid
+  after_school: '/images/after_school_class.png', // Dance Class
 
   // Founder
   founder: '/images/founder.jpg',

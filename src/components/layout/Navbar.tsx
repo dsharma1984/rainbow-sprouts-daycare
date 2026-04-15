@@ -2,10 +2,11 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { Menu, X, Phone, MessageCircle } from 'lucide-react';
+import { Menu, X, Phone, MessageCircle, Star } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { BookTourModal } from '../ui/BookTourModal';
 import { TopBar } from './TopBar';
+import { motion } from 'framer-motion';
 
 export function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,14 +22,14 @@ export function Navbar() {
 
     return (
         <>
-            <header className="sticky top-0 left-0 w-full z-40 bg-white border-b border-slate-100 shadow-sm transition-all duration-300">
+            <header className="sticky top-0 left-0 w-full z-50 bg-white/85 backdrop-blur-md border-b border-white/40 shadow-sm transition-all duration-300">
                 <div className="container mx-auto px-4 h-22 md:h-20 flex items-center justify-between">
                     {/* Logo */}
-                    <Link href="/" className="flex items-center gap-2 mx-auto md:mx-0">
+                    <Link href="/" className="flex items-center gap-2 mx-auto md:mx-0 py-1">
                         <img
                             src="/images/logo-full.png"
                             alt="Rainbow Sprouts"
-                            className="w-[220px] md:w-[200px] h-auto object-contain mix-blend-multiply transition-all duration-300 transform translate-y-1"
+                            className="w-[260px] md:w-[240px] max-h-[72px] h-auto object-contain mix-blend-multiply transition-all duration-300"
                         />
                     </Link>
 
@@ -63,7 +64,7 @@ export function Navbar() {
 
                 {/* Mobile Menu */}
                 {isMenuOpen && (
-                    <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 shadow-lg py-4 flex flex-col items-center gap-4">
+                    <div className="md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-xl border-b border-slate-100 shadow-xl py-4 flex flex-col items-center gap-4">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.href}
@@ -80,22 +81,22 @@ export function Navbar() {
 
 
 
-            {/* Mobile Sticky Bottom Bar */}
-            <div className="md:hidden fixed bottom-0 left-0 w-full bg-white border-t border-slate-200 p-4 z-40 flex gap-3 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
-                <a href="tel:+918199062496" className="flex-1">
-                    <Button variant="secondary" size="md" fullWidth className="gap-2">
-                        <Phone className="w-4 h-4" /> Call
-                    </Button>
-                </a>
-                <Button
-                    variant="primary"
-                    size="md"
-                    fullWidth
-                    className="flex-1 gap-2"
-                    onClick={() => setIsModalOpen(true)}
-                >
-                    <MessageCircle className="w-4 h-4" /> Book Tour
-                </Button>
+            {/* Unified Magical Mobile Action Dock */}
+            <div className="fixed bottom-0 w-full z-50 md:hidden pb-4 pt-8 px-4 pointer-events-none">
+                <div className="bg-white/80 backdrop-blur-md border border-white/40 shadow-2xl p-2 rounded-[2rem] flex gap-2 w-full max-w-sm mx-auto pointer-events-auto">
+                    <motion.button 
+                        whileTap={{ scale: 0.95 }} 
+                        onClick={() => setIsModalOpen(true)}
+                        className="flex-1 bg-primary text-white font-bold py-3 px-4 rounded-[1.5rem] text-sm shadow-md flex items-center justify-center gap-1.5 border border-primary/20"
+                    >
+                        <Star className="w-4 h-4 fill-white" /> Visit Us
+                    </motion.button>
+                    <a href="tel:+918199062496" className="flex-1">
+                        <motion.button whileTap={{ scale: 0.95 }} className="w-full bg-white text-gray-800 font-bold py-3 px-4 rounded-[1.5rem] text-sm shadow-sm flex items-center justify-center gap-1.5 border border-gray-200">
+                            <Phone className="w-4 h-4" /> Call
+                        </motion.button>
+                    </a>
+                </div>
             </div>
 
             <BookTourModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />

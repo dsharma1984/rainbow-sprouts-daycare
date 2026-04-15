@@ -91,7 +91,7 @@ const ContactForm = () => {
 
 export default function ContactPage() {
     return (
-        <SectionWrapper background="soft" className="min-h-screen pt-20">
+        <SectionWrapper background="soft" className="min-h-screen">
             <div className="max-w-5xl mx-auto">
                 <div className="text-center mb-16">
                     <motion.h1
@@ -203,10 +203,14 @@ export default function ContactPage() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white h-[400px] bg-slate-100"
+                    className="relative rounded-[3rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.1)] h-[400px] border-8 border-white bg-slate-100 group mb-20"
                 >
+                    {/* Playful map frame overlap - Hidden on mobile */}
+                    <div className="absolute -top-6 -left-6 bg-yellow-400 w-24 h-24 rounded-full blur-2xl opacity-50 pointer-events-none group-hover:scale-150 transition-transform duration-1000 z-10 hidden md:block"></div>
+                    <div className="absolute -bottom-6 -right-6 bg-teal-400 w-24 h-24 rounded-full blur-2xl opacity-50 pointer-events-none group-hover:scale-150 transition-transform duration-1000 z-10 hidden md:block"></div>
+
                     {/* Overlay Button */}
-                    <a href="https://maps.app.goo.gl/PBCEYpAEtRFsamQP7" target="_blank" className="absolute top-6 right-6 z-10">
+                    <a href="https://maps.app.goo.gl/PBCEYpAEtRFsamQP7" target="_blank" className="absolute top-6 right-6 z-20">
                         <Button variant="primary" size="sm" className="shadow-lg rounded-full text-sm font-bold">
                             Open in Google Maps <ExternalLink className="w-4 h-4 ml-2" />
                         </Button>
@@ -216,12 +220,12 @@ export default function ContactPage() {
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.8577003245023!2d76.9951409!3d28.4537057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d17a0ae450437%3A0xd13a807bc964f1c9!2sRainbow%20Sprouts%20Daycare%20%26%20Play%20School!5e0!3m2!1sen!2sin"
                         width="100%"
                         height="100%"
-                        style={{ border: 0 }}
+                        style={{ border: 0, filter: 'contrast(1.1) saturate(1.2)' }}
                         allowFullScreen
                         loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade"
                         title="Google Map"
-                        className="grayscale-[30%] hover:grayscale-0 transition-all duration-700"
+                        className="relative z-0"
                     ></iframe>
                 </motion.div>
             </div>
