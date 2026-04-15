@@ -41,8 +41,6 @@ const TestimonialCarousel = () => {
       {/* Magical Scrolling Container */}
       <div
         className="relative w-full max-w-7xl mx-auto group"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
       >
         {/* Gradients to fade edges */}
         <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#FFF8F0] to-transparent z-10 pointer-events-none hidden md:block"></div>
