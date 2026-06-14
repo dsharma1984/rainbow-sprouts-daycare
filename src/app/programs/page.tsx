@@ -125,6 +125,7 @@ export default function ProgramsPage() {
     );
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function ProgramCard({ prog }: { prog: any }) {
     return (
         <motion.section 

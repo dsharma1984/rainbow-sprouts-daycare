@@ -63,7 +63,7 @@ export function BookTourModal({ isOpen, onClose }: BookTourModalProps) {
 
                         <form onSubmit={handleSubmit} className="space-y-4">
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Parent's Name</label>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Parent&apos;s Name</label>
                                 <input
                                     type="text"
                                     required
@@ -75,7 +75,7 @@ export function BookTourModal({ isOpen, onClose }: BookTourModalProps) {
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Child's Age (Years)</label>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Child&apos;s Age (Years)</label>
                                 <input
                                     type="number"
                                     required
@@ -106,7 +106,7 @@ export function BookTourModal({ isOpen, onClose }: BookTourModalProps) {
                                     Submit on WhatsApp
                                 </Button>
                                 <p className="text-xs text-center text-gray-400 mt-3">
-                                    We'll open WhatsApp to send your details.
+                                    We&apos;ll open WhatsApp to send your details.
                                 </p>
                             </div>
                         </form>

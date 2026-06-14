@@ -40,7 +40,7 @@ export default function AboutPage() {
                             <h3 className="text-xl font-bold text-gray-500 mb-6">Founder & Principal</h3>
 
                             <p className="text-gray-600 leading-relaxed mb-6 text-lg">
-                                "With over 10 years of experience in early childhood education, Kamini is dedicated to creating a nurturing environment where every child can flourish. As a B.Ed and TEFL certified educator with an MBA and UGC-NET qualification, she specializes in personality development and holistic learning methodologies."
+                                &ldquo;With over 10 years of experience in early childhood education, Kamini is dedicated to creating a nurturing environment where every child can flourish. As a B.Ed and TEFL certified educator with an MBA and UGC-NET qualification, she specializes in personality development and holistic learning methodologies.&rdquo;
                             </p>
 
                             <div className="grid grid-cols-2 gap-4">

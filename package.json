@@ -12,12 +12,12 @@
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.26",
     "lucide-react": "^0.562.0",
-    "next": "16.1.1",
-    "next-sanity": "^9.8.8",
+    "next": "^16.2.9",
+    "next-sanity": "^13.1.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-social-media-embed": "^2.5.17",
-    "sanity": "^3.74.2",
+    "sanity": "^6.0.0",
     "styled-components": "^6.1.11",
     "tailwind-merge": "^3.4.0"
   },
@@ -27,8 +27,13 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.1.1",
+    "eslint-config-next": "^16.2.9",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "overrides": {
+    "postcss": "^8.5.10",
+    "uuid": "^11.1.1",
+    "js-yaml": "^3.14.2"
   }
 }

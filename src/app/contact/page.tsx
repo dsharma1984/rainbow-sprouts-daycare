@@ -29,7 +29,7 @@ const ContactForm = () => {
                     <CheckCircle className="w-8 h-8 text-green-600" />
                 </div>
                 <h3 className="text-xl font-bold text-green-800 mb-2">Message Sent!</h3>
-                <p className="text-green-700">Thank you! We'll get back to you within 2 hours.</p>
+                <p className="text-green-700">Thank you! We&apos;ll get back to you within 2 hours.</p>
                 <button
                     onClick={() => setStatus('idle')}
                     className="mt-6 text-sm font-bold text-green-600 hover:text-green-800 underline"
@@ -107,7 +107,7 @@ export default function ContactPage() {
                         transition={{ delay: 0.2 }}
                         className="text-xl text-gray-600 font-medium"
                     >
-                        We'd love to hear from you and show you around.
+                        We&apos;d love to hear from you and show you around.
                     </motion.p>
                 </div>
 

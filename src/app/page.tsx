@@ -35,7 +35,7 @@ const TestimonialCarousel = () => {
           Happy Families
         </motion.h2>
         <div className="h-1 w-24 bg-primary mx-auto rounded-full mb-6"></div>
-        <p className="text-gray-500 text-xl max-w-2xl mx-auto leading-relaxed">Don't just take our word for it. Here is what our community says.</p>
+        <p className="text-gray-500 text-xl max-w-2xl mx-auto leading-relaxed">Don&apos;t just take our word for it. Here is what our community says.</p>
       </div>
 
       {/* Magical Scrolling Container */}
@@ -79,7 +79,7 @@ const TestimonialCarousel = () => {
                     {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-current" />)}
                   </div>
 
-                  <p className="text-gray-600 mb-8 font-medium text-lg leading-relaxed italic">"{t.text}"</p>
+                  <p className="text-gray-600 mb-8 font-medium text-lg leading-relaxed italic">&ldquo;{t.text}&rdquo;</p>
 
                   <div className="border-t border-gray-100 pt-6">
                     <h4 className="font-bold text-gray-900 text-xl font-heading">{t.name}</h4>
@@ -106,7 +106,7 @@ export default function Home() {
         const query = `*[_type == "gallery"] | order(_createdAt desc)[0...4] { "src": image.asset->url }`;
         const data = await client.fetch(query);
         if (data && data.length > 0) {
-          setRecentGallery(data.map((item: any) => item.src));
+          setRecentGallery(data.map((item: { src: string }) => item.src));
         }
       } catch (error) {
         console.error("Failed to fetch recent gallery images:", error);
@@ -448,7 +448,7 @@ export default function Home() {
             <div className="w-full md:w-1/2 text-center md:text-left">
               <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">Meet the Heart of <br /><span className="text-primary">Rainbow Sprouts</span></h2>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                "I started Rainbow Sprouts with a simple dream – to create a warm, trusting space where children feel seen, heard, and deeply cared for. Confidence starts with kindness."
+                &ldquo;I started Rainbow Sprouts with a simple dream – to create a warm, trusting space where children feel seen, heard, and deeply cared for. Confidence starts with kindness.&rdquo;
               </p>
 
               <div className="flex flex-col md:flex-row gap-6 items-center">
