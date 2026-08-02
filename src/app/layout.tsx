@@ -28,8 +28,32 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://rainbowsprouts.in",
   },
-  title: "Rainbow Sprouts Daycare",
-  description: "A premium learning experience for your child. Sector 10, Gurgaon.",
+  title: {
+    default: "Rainbow Sprouts Daycare & Playschool | Sector 10 Gurgaon",
+    template: "%s | Rainbow Sprouts Daycare",
+  },
+  description: "Premier daycare & playschool in Sector 10, Gurgaon with live CCTV access, home-cooked meals, 1:8 teacher ratio, and experienced mentors.",
+  keywords: [
+    "Daycare Gurgaon",
+    "Playschool Sector 10 Gurgaon",
+    "Preschool Gurgaon",
+    "Rainbow Sprouts",
+    "Best Daycare Sector 10 Gurgaon",
+    "Childcare Sector 10",
+  ],
+  openGraph: {
+    title: "Rainbow Sprouts Daycare & Playschool | Sector 10 Gurgaon",
+    description: "Premier daycare & playschool in Sector 10, Gurgaon with live CCTV access, home-cooked meals, 1:8 teacher ratio, and experienced mentors.",
+    url: "https://rainbowsprouts.in",
+    siteName: "Rainbow Sprouts Daycare",
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rainbow Sprouts Daycare & Playschool | Sector 10 Gurgaon",
+    description: "Premier daycare & playschool in Sector 10, Gurgaon with live CCTV access, home-cooked meals, 1:8 teacher ratio, and experienced mentors.",
+  },
 };
 
 export default function RootLayout({
