@@ -94,10 +94,10 @@ export function BookTourModal({ isOpen, onClose }: BookTourModalProps) {
                                     value={formData.program}
                                     onChange={(e) => setFormData({ ...formData, program: e.target.value })}
                                 >
-                                    <option>Toddler (1-2 Years)</option>
-                                    <option>Playgroup (2-3 Years)</option>
-                                    <option>Nursery (3+ Years)</option>
-                                    <option>Daycare & After School</option>
+                                    <option>Playschool & Playgroup (2-3 Years)</option>
+                                    <option>Preschool & Nursery (3+ Years)</option>
+                                    <option>Daycare (Full-Day / Half-Day, 1+ Years)</option>
+                                    <option>Tuition Classes & After-School Support</option>
                                 </select>
                             </div>
 

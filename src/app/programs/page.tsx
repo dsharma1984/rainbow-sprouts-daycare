@@ -11,10 +11,10 @@ import { motion } from 'framer-motion';
 export default function ProgramsPage() {
     const earlyYears = [
         {
-            title: "Playgroup",
+            title: "Playschool & Playgroup",
             age: "2 - 3 Years",
-            desc: "Structured play-based learning to build confidence and independence.",
-            features: ["Language Skills", "Creative Arts", "Physical Activity", "Early Math Concepts"],
+            desc: "Joyful play-based learning and sensory development to build confidence, motor skills, and social independence.",
+            features: ["Language & Phonics", "Creative Arts & Music", "Physical Play & Motor Skills", "Early Math Concepts"],
             image: IMAGES.playgroup,
             theme: {
                 shadow: "hover:shadow-[0_20px_50px_rgba(250,204,21,0.25)]", 
@@ -24,10 +24,10 @@ export default function ProgramsPage() {
             }
         },
         {
-            title: "Nursery",
+            title: "Preschool & Nursery (Pre-school)",
             age: "3+ Years",
-            desc: "Comprehensive curriculum focusing on school readiness and holistic growth.",
-            features: ["Reading & Writing", "Logical Thinking", "World Awareness", "Collaborative Projects"],
+            desc: "Comprehensive pre-school curriculum focusing on reading, writing, logical thinking, and school readiness.",
+            features: ["Reading & Writing Readiness", "Logical Reasoning", "General Awareness", "Collaborative School Readiness"],
             image: IMAGES.nursery,
             theme: {
                 shadow: "hover:shadow-[0_20px_50px_rgba(16,185,129,0.2)]", 
@@ -40,10 +40,10 @@ export default function ProgramsPage() {
 
     const careServices = [
         {
-            title: "Daycare",
+            title: "Daycare (Full & Half Day)",
             age: "1+ Years",
-            desc: "A warm, loving home-away-from-home where children are cared for like family.",
-            features: ["Nutritious Home-Cooked Meals", "Dedicated Nap Rooms", "Evening Activities (Art/Dance)", "Flexible Timings (8:30 - 6:30)"],
+            desc: "A warm, loving home-away-from-home with live CCTV parent streaming and pediatrician-approved fresh meals.",
+            features: ["Nutritious Home-Cooked Meals", "Live CCTV Streaming for Parents", "Dedicated Nap Rooms", "Flexible Timings (8:30 AM - 7:00 PM)"],
             image: IMAGES.daycare,
             theme: {
                 shadow: "hover:shadow-[0_20px_50px_rgba(249,115,22,0.2)]", 
@@ -53,10 +53,10 @@ export default function ProgramsPage() {
             }
         },
         {
-            title: "After School",
-            age: "3 - 7 Years",
-            desc: "Productive evenings with homework help, hobbies, and nutritious snacks.",
-            features: ["Homework Assistance", "Hobby Classes", "Safe Environment", "Social Interaction"],
+            title: "Tuitions & After-School Classes",
+            age: "3 - 10 Years",
+            desc: "Focused tuition classes and academic support with school homework assistance, reading, writing, and hobby clubs.",
+            features: ["Personalized School Tuitions", "Homework Assistance", "Phonics, Reading & Math", "Hobby Classes & Supervised Care"],
             image: IMAGES.after_school,
             theme: {
                 shadow: "hover:shadow-[0_20px_50px_rgba(56,189,248,0.2)]", 

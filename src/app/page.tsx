@@ -173,7 +173,7 @@ export default function Home() {
             </h1>
 
             <p className="font-medium text-gray-600 text-lg md:text-2xl mb-6 md:mb-8 leading-relaxed max-w-lg">
-              Premium Care & Education in Sector 10, Gurgaon. Live CCTV, Home-Cooked Meals & 1:8 Teacher Ratio.
+              Premier Daycare, Playschool, Preschool & Tuition Classes in Sector 10, Gurgaon. Live CCTV, Home-Cooked Meals & 1:8 Ratio.
             </p>
 
             <ul className="mb-10 space-y-3 text-gray-600 font-medium">
@@ -274,19 +274,19 @@ export default function Home() {
           >
             {[
               {
-                title: 'Playgroup',
+                title: 'Playschool',
                 age: '2-3 Years',
-                features: ['Social Skills', 'Music & Dance', 'Creative Art'],
-                link: 'playgroup',
+                features: ['Playgroup Curriculum', 'Music & Dance', 'Sensory Play'],
+                link: 'playschool-and-playgroup',
                 theme: 'from-orange-50 to-orange-100 border-orange-200 text-orange-900',
                 icon: '🎨',
                 shadow: 'hover:shadow-[0_12px_32px_rgba(255,165,0,0.3)]'
               },
               {
-                title: 'Nursery',
+                title: 'Preschool',
                 age: '3+ Years',
-                features: ['Reading & Writing', 'Math Concepts', 'World Awareness'],
-                link: 'nursery',
+                features: ['Nursery & Pre-school', 'Phonics & Literacy', 'Math Readiness'],
+                link: 'preschool-and-nursery-pre-school',
                 theme: 'from-teal-50 to-teal-100 border-teal-200 text-teal-900',
                 icon: '🌱',
                 shadow: 'hover:shadow-[0_12px_32px_rgba(74,159,181,0.3)]'
@@ -294,17 +294,17 @@ export default function Home() {
               {
                 title: 'Daycare',
                 age: '1+ Years',
-                features: ['Nutritious Meals', 'Peaceful Naps', 'Flexible Hours'],
-                link: 'daycare',
+                features: ['Nutritious Meals', 'Live CCTV Streaming', 'Flexible Hours'],
+                link: 'daycare-full-and-half-day',
                 theme: 'from-yellow-50 to-yellow-100 border-yellow-200 text-yellow-900',
                 icon: '💖',
                 shadow: 'hover:shadow-[0_12px_32px_rgba(234,179,8,0.3)]'
               },
               {
-                title: 'After-School',
-                age: '3-7 Years',
-                features: ['Homework Help', 'Hobby Classes', 'Safe Environment'],
-                link: 'after-school',
+                title: 'Tuitions',
+                age: '3-10 Years',
+                features: ['School Tuitions', 'Homework Help', 'Academic Foundation'],
+                link: 'tuitions-and-after-school-classes',
                 theme: 'from-blue-50 to-blue-100 border-blue-200 text-blue-900',
                 icon: '🚀',
                 shadow: 'hover:shadow-[0_12px_32px_rgba(26,47,79,0.3)]'

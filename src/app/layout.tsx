@@ -29,30 +29,43 @@ export const metadata: Metadata = {
     canonical: "https://rainbowsprouts.in",
   },
   title: {
-    default: "Rainbow Sprouts Daycare & Playschool | Sector 10 Gurgaon",
-    template: "%s | Rainbow Sprouts Daycare",
+    default: "Rainbow Sprouts | Daycare, Playschool, Preschool & Tuitions in Sector 10 Gurgaon",
+    template: "%s | Rainbow Sprouts",
   },
-  description: "Premier daycare & playschool in Sector 10, Gurgaon with live CCTV access, home-cooked meals, 1:8 teacher ratio, and experienced mentors.",
+  description: "Premier Daycare, Playschool, Preschool & Tuition Classes in Sector 10, Gurgaon. Live CCTV streaming, home-cooked fresh meals, 1:8 teacher ratio, and after-school academic support.",
   keywords: [
     "Daycare Gurgaon",
-    "Playschool Sector 10 Gurgaon",
-    "Preschool Gurgaon",
-    "Rainbow Sprouts",
+    "Daycare Sector 10 Gurgaon",
     "Best Daycare Sector 10 Gurgaon",
-    "Childcare Sector 10",
+    "Playschool Gurgaon",
+    "Playschool Sector 10 Gurgaon",
+    "Best Playschool in Gurgaon",
+    "Preschool Gurgaon",
+    "Preschool Sector 10 Gurgaon",
+    "Pre-school Gurgaon",
+    "Best Preschool in Gurgaon",
+    "Tuition classes Sector 10 Gurgaon",
+    "Tuitions Sector 10 Gurgaon",
+    "After school tuitions Gurgaon",
+    "Tuitions near Sector 10",
+    "Playgroup Gurgaon",
+    "Nursery school Gurgaon",
+    "Rainbow Sprouts",
+    "Daycare and tuition classes Sector 10",
+    "Childcare Sector 10 Gurgaon"
   ],
   openGraph: {
-    title: "Rainbow Sprouts Daycare & Playschool | Sector 10 Gurgaon",
-    description: "Premier daycare & playschool in Sector 10, Gurgaon with live CCTV access, home-cooked meals, 1:8 teacher ratio, and experienced mentors.",
+    title: "Rainbow Sprouts | Daycare, Playschool, Preschool & Tuitions | Sector 10 Gurgaon",
+    description: "Premier Daycare, Playschool, Preschool & Tuition Classes in Sector 10, Gurgaon. Live CCTV streaming, home-cooked meals, 1:8 teacher ratio, and after-school academic support.",
     url: "https://rainbowsprouts.in",
-    siteName: "Rainbow Sprouts Daycare",
+    siteName: "Rainbow Sprouts Daycare, Playschool & Preschool",
     locale: "en_IN",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rainbow Sprouts Daycare & Playschool | Sector 10 Gurgaon",
-    description: "Premier daycare & playschool in Sector 10, Gurgaon with live CCTV access, home-cooked meals, 1:8 teacher ratio, and experienced mentors.",
+    title: "Rainbow Sprouts | Daycare, Playschool, Preschool & Tuitions | Sector 10 Gurgaon",
+    description: "Premier Daycare, Playschool, Preschool & Tuition Classes in Sector 10, Gurgaon. Live CCTV streaming, home-cooked meals, 1:8 teacher ratio, and after-school academic support.",
   },
 };
 
@@ -60,14 +73,14 @@ const jsonLdSchema = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": ["ChildCare", "LocalBusiness", "EducationalOrganization"],
+      "@type": ["ChildCare", "Preschool", "LocalBusiness", "EducationalOrganization"],
       "@id": "https://rainbowsprouts.in/#organization",
-      "name": "Rainbow Sprouts Daycare & Playschool",
-      "alternateName": "Rainbow Sprouts",
+      "name": "Rainbow Sprouts Daycare, Playschool, Preschool & Tuitions",
+      "alternateName": ["Rainbow Sprouts", "Rainbow Sprouts Playschool", "Rainbow Sprouts Preschool"],
       "url": "https://rainbowsprouts.in",
       "logo": "https://rainbowsprouts.in/images/logo-full.png",
       "image": "https://rainbowsprouts.in/images/founder.png",
-      "description": "Premier daycare and playschool in Sector 10, Gurgaon offering live CCTV access, home-cooked fresh meals, 1:8 teacher-child ratio, police-verified staff, and holistic learning programs for ages 1 to 5+.",
+      "description": "Premier daycare, playschool, preschool (pre-school), and after-school tuition center in Sector 10, Gurgaon offering live CCTV access, home-cooked fresh meals, 1:8 teacher-child ratio, police-verified staff, and personalized academic coaching.",
       "telephone": "+918199062496",
       "priceRange": "$$",
       "currenciesAccepted": "INR",
@@ -104,10 +117,50 @@ const jsonLdSchema = {
         { "@type": "LocationFeatureSpecification", "name": "Fresh Home-Cooked Meals", "value": true },
         { "@type": "LocationFeatureSpecification", "name": "1:8 Teacher to Student Ratio", "value": true },
         { "@type": "LocationFeatureSpecification", "name": "Police Verified Staff", "value": true },
-        { "@type": "LocationFeatureSpecification", "name": "Indoor and Outdoor Play Area", "value": true }
+        { "@type": "LocationFeatureSpecification", "name": "Indoor and Outdoor Play Area", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "School Tuitions & Academic Support", "value": true }
       ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Programs and Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Playschool & Playgroup",
+              "description": "Joyful play-based early learning and sensory development for toddlers aged 2 to 3 years."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Preschool & Nursery (Pre-school)",
+              "description": "Comprehensive pre-school curriculum focusing on phonics, math, literacy, and school readiness for children aged 3+ years."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Daycare & Childcare",
+              "description": "Flexible full-day and half-day daycare with live CCTV parent streaming and home-cooked fresh meals for children aged 1+ years."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "After-School Tuitions & Tuition Classes",
+              "description": "Personalized school tuition classes, homework assistance, reading, writing, and conceptual coaching for primary school children."
+            }
+          }
+        ]
+      },
       "sameAs": [
-        "https://www.instagram.com/rainbowsproutsdaycare"
+        "https://www.instagram.com/rainbowsproutsdaycare_sec10ggn/",
+        "https://www.facebook.com/profile.php?id=61555075214265"
       ]
     },
     {
@@ -116,10 +169,34 @@ const jsonLdSchema = {
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Where is Rainbow Sprouts Daycare located?",
+          "name": "Does Rainbow Sprouts offer Playschool and Playgroup in Sector 10 Gurgaon?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Rainbow Sprouts Daycare & Playschool is located in Sector 10, Gurgaon (Gurugram), Haryana 122001."
+            "text": "Yes, Rainbow Sprouts offers a premier playschool and playgroup program in Sector 10, Gurgaon for children aged 2 to 3 years, focusing on language development, social bonding, and sensory play."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Rainbow Sprouts offer Preschool / Pre-school programs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, Rainbow Sprouts provides structured preschool and pre-school (Nursery) education for children aged 3+ years, covering phonics, early numeracy, logical reasoning, and school readiness."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are tuition classes and after-school academic help available?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, Rainbow Sprouts conducts after-school tuition classes and homework support for school-going children (ages 3 to 10 years), providing individual attention in school subjects, reading, and writing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where is Rainbow Sprouts located in Gurgaon?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Rainbow Sprouts Daycare & Playschool is located in Sector 10, Gurgaon (Gurugram), Haryana 122001, near Civil Hospital."
           }
         },
         {
@@ -127,7 +204,7 @@ const jsonLdSchema = {
           "name": "Does Rainbow Sprouts have live CCTV access for parents?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, Rainbow Sprouts provides live, secure CCTV streaming access to parents on their smartphones throughout daycare hours."
+            "text": "Yes, Rainbow Sprouts provides live, secure CCTV streaming access to parents on their smartphones throughout daycare and playschool hours."
           }
         },
         {
@@ -140,14 +217,6 @@ const jsonLdSchema = {
         },
         {
           "@type": "Question",
-          "name": "What age groups are accepted at Rainbow Sprouts Daycare?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Rainbow Sprouts caters to children aged 1 to 5+ years across Toddler (1-2 yrs), Playgroup (2-3 yrs), Nursery (3+ yrs), and Daycare & After School care."
-          }
-        },
-        {
-          "@type": "Question",
           "name": "Are meals provided at Rainbow Sprouts?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -156,10 +225,10 @@ const jsonLdSchema = {
         },
         {
           "@type": "Question",
-          "name": "How can parents book a tour of Rainbow Sprouts Daycare?",
+          "name": "How can parents book a tour of Rainbow Sprouts?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Parents can book a tour directly via WhatsApp on rainbowsprouts.in or by calling +91 81990 62496."
+            "text": "Parents can book a school tour directly via WhatsApp on rainbowsprouts.in or by calling +91 81990 62496."
           }
         }
       ]
