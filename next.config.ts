@@ -5,6 +5,19 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.resolve(__dirname),
   },
+  async headers() {
+    return [
+      {
+        source: "/studio/:path*",
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value: "frame-ancestors 'self' https://*.sanity.io https://*.sanity.build https://sanity.io;",
+          },
+        ],
+      },
+    ];
+  },
   async redirects() {
     return [
       {
