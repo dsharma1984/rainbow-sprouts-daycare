@@ -5,14 +5,48 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.resolve(__dirname),
   },
+  skipTrailingSlashRedirect: true,
   async headers() {
     return [
+      {
+        source: "/studio",
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value: "frame-ancestors 'self' https://*.sanity.io https://*.sanity.build https://sanity.io;",
+          },
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "*",
+          },
+          {
+            key: "Access-Control-Allow-Methods",
+            value: "GET, OPTIONS, HEAD",
+          },
+          {
+            key: "Access-Control-Allow-Headers",
+            value: "*",
+          },
+        ],
+      },
       {
         source: "/studio/:path*",
         headers: [
           {
             key: "Content-Security-Policy",
             value: "frame-ancestors 'self' https://*.sanity.io https://*.sanity.build https://sanity.io;",
+          },
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "*",
+          },
+          {
+            key: "Access-Control-Allow-Methods",
+            value: "GET, OPTIONS, HEAD",
+          },
+          {
+            key: "Access-Control-Allow-Headers",
+            value: "*",
           },
         ],
       },
