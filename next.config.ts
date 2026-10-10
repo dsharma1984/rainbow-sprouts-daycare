@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: "Content-Security-Policy",
-            value: "frame-ancestors 'self' https://*.sanity.io https://*.sanity.build https://sanity.io;",
+            value: "frame-ancestors 'self' https://*.sanity.io https://*.sanity.studio https://*.sanity.build https://sanity.io https://sanity.studio;",
           },
           {
             key: "Access-Control-Allow-Origin",
@@ -34,7 +34,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: "Content-Security-Policy",
-            value: "frame-ancestors 'self' https://*.sanity.io https://*.sanity.build https://sanity.io;",
+            value: "frame-ancestors 'self' https://*.sanity.io https://*.sanity.studio https://*.sanity.build https://sanity.io https://sanity.studio;",
           },
           {
             key: "Access-Control-Allow-Origin",
